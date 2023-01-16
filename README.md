@@ -11,8 +11,10 @@
 This is then processed to return a string of numbers for where the resulting URL is found in the Google results.
 if user enter any other keyword the response will return record not found.
 
+* Result shows as expected
 <img width="1792" alt="Sympali App success result" src="https://user-images.githubusercontent.com/57215858/212584754-b9cc8908-2e9f-47de-8f48-1d50fbbf9a2c.png">
 
+* Negative test, when keyword or Url is something else than it shows records not found(As other records are not available in mock result list)
 <img width="1792" alt="Sympali Records Not Fount" src="https://user-images.githubusercontent.com/57215858/212585009-db237627-4f60-459b-8909-470969ecab6b.png">
 
 
