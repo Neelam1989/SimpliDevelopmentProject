@@ -9,10 +9,12 @@ namespace SympliDevelopment.Api.Controllers
   public class SearchController : ControllerBase
   {
     private SearchResultsCacheProvider searchResultsCacheProvider;
-    
-    public SearchController(SearchResultsCacheProvider searchResultsCacheProvider)
+    private readonly ILogger<SearchController> _logger;
+
+    public SearchController(SearchResultsCacheProvider searchResultsCacheProvider, ILogger<SearchController> logger)
     {
         this.searchResultsCacheProvider = searchResultsCacheProvider;
+        this._logger = logger;
     }
 
     [HttpGet()]
@@ -27,7 +29,7 @@ namespace SympliDevelopment.Api.Controllers
             foreach (string word in words)
             {
                 var searchResult = await this.searchResultsCacheProvider.GetSearchResults(word);
-                var index = searchResult.Results.Where(result => result.Url.Equals(url)).Select(result => result.Index).First();
+                var index = searchResult.Results.Where(result => result.Title.Equals(word) && result.Url.Equals(url)).Select(result => result.Index).First();
                 sb.Append(index);
                 if(words.Count() > 1)
                    sb.Append(", ");
@@ -36,7 +38,8 @@ namespace SympliDevelopment.Api.Controllers
         }
         catch(Exception ex)
         {
-            return BadRequest("Record Not Found");
+             _logger.LogError("Get({ keywords}) NOT FOUND", keywords);
+             return BadRequest("Record Not Found");
         }
 
     }

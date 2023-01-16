@@ -11,18 +11,18 @@ namespace SympliDevelopment.Api.Clients
             "e-settlements",
             new List<SearchEntity>
             {
-                new SearchEntity { Index = 2, Title = "Online Settlements", Url = "www.sympli.com.au" },
+                new SearchEntity { Index = 1, Title = "Online Settlements", Url = "www.sympli.com.au" },
                 new SearchEntity { Index = 2, Title = "e-settlements", Url = "www.sympli.com.au" },
-                new SearchEntity { Index = 2, Title = "Settlements", Url = "www.sympli.com.au" },
-                new SearchEntity { Index = 2, Title = "Online Settlements", Url = "www.es.com.au" },
-                new SearchEntity { Index = 2, Title = "e-settlements", Url = "www.es.com.au" },
-                new SearchEntity { Index = 2, Title = "Settlements", Url = "www.es.com.au" },
+                new SearchEntity { Index = 3, Title = "Settlements", Url = "www.sympli.com.au" },
+                new SearchEntity { Index = 4, Title = "Online Settlements", Url = "www.es.com.au" },
+                new SearchEntity { Index = 5, Title = "e-settlements", Url = "www.es.com.au" },
+                new SearchEntity { Index = 6, Title = "Settlements", Url = "www.es.com.au" },
             } 
         }
      };
 
-        //As its mock data with less that 100 records, i did not use top paramere to fetch 100 records, once it will
-        //real google API can use top to fetch 100 recods
+        //As its mock data with less that 100 records, i did not use top paramere to fetch 100 records, once it will be
+        //real google API, we can use top to fetch 100 recods
         public SearchResult GetSearchResults(string keyword, int top, string? cursor = null)
         {
             if(!mockSearchResults.TryGetValue(keyword, out List<SearchEntity> searchEntities)) {
